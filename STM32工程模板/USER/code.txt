@@ -1,0 +1,34 @@
+当函数中出现//here is the data decode 或//your code here。 注释时，根据自己的需要写相关代码
+
+使用时需要自己写代码的地方：
+1、USART.c中的UXARTx_IRQ();//串口中断；
+2、Timer.c中的Timx_IRQ();//定时器中断；
+3、LCD_ShowChinese（）第二个if中的Hzk23；（LCD.c）
+4、Show_MMP（）中for里的gImage_mmp；(LCD.c)
+5、调用PWM时需要将PWM值装载进设置的TIMx的CHx(1~4)通道内；例如：TIM2->CRR4=pwm_flag;
+
+
+定时器初始化函数：TIMx_Timer_Init(time*10-1,8400-1); 计时timer（ms） :计算方式为：84M/8400=10000hz，（timer*10）/10000=  ms;
+
+串口初始化函数：Usart_Init(串口x（1~5）,波特率)；
+
+PWM初始化函数：TIMx(2~5)_PWM_Init(times-1，84-1，0~1（模式）):times(us)
+
+
+用USART1_Send(unsigned char *DataToSend ,u8 data_num)函数向串口发送比用printf（）快很多；
+对时间要求严格的应用别用printf或者sprintf;printf很费时。
+串口发送函数
+{
+      u8 data[100];
+     long=sprintf(data,"你要发送的内容%d",你想发的数字)；
+	 USART1_Send（data,long）;
+	 
+
+}
+
+
+
+
+
+
+
