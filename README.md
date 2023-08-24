@@ -1,2 +1,2 @@
 # STM32
-移植了FreeRTOSV9.0系统的STM32F407ZG工程模板
+移植了FreeRTOSV9.0系统的STM32F407ZG标准库函数模板
